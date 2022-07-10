@@ -1,0 +1,9 @@
+[package]
+name = "pbc-contract-common"
+version = "0.0.0"
+authors = ["PDAO Team <hello@postech-dao.xyz>"]
+edition = "2021"
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+rust_decimal = "1.25.0"

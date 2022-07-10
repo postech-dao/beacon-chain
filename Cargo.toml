@@ -1,0 +1,8 @@
+[workspace]
+members = [
+    "relayer",
+    "explorer",
+    "colony-common",
+    "contract-common",
+    "node",
+]
