@@ -37,6 +37,9 @@ pub enum Error {
     /// When there is a problem to access to the full node.
     #[error("connection error: {0}")]
     ConnectionError(String),
+    /// When the transaction is rejected by the full node, before it gets to the contract.
+    #[error("transaction rejected: {0}")]
+    TransactionRejected(String),
     /// When the contract fails to decode the input data.
     #[error("failed to parse the payload of the transaction")]
     FailedToParseTransactionPayload,
