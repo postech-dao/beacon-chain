@@ -131,7 +131,7 @@ pub trait ColonyChain {
         proof: MerkleProof,
     ) -> Result<(), Error>;
 
-    /// Submits a transaction to one of the 'custom' contracts in this chain except the light client and the treasury, generalized by the opaque (`String`) packet type.
+    /// Delivers an arbitrary message, which is an opaque `String`, to one of the 'custom' contracts in this chain except the light client and the treasury,
     ///
     /// This is one of the message delivery methods; a transaction that carries the given data and the proof will be submitted to the chain.
     /// The target contract is the one with the type of `ContractType::Custom` and the name of `contract_name`.
