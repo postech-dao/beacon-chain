@@ -103,16 +103,13 @@ pub trait ColonyChain {
 
     /// Updates the light client state by providing the next, valid block header and its proof.
     ///
-    /// A transaction that carries the given data will be submitted to the chain.
-    async fn deliver_message_update_light_client(
-        &self,
-        message: LightClientUpdageMessage,
-    ) -> Result<(), Error>;
+    /// This is one of the message delivery methods; a transaction that carries the given data will be submitted to the chain.
+    async fn update_light_client(&self, message: LightClientUpdageMessage) -> Result<(), Error>;
 
     /// Transfers a given amount of fungible tokens from the treasury contract to the destination address.
     ///
-    /// A transaction that carries the given data and the proof will be submitted to the chain.
-    async fn deliver_message_treasury_transfer_fungible(
+    /// This is one of the message delivery methods; a transaction that carries the given data and the proof will be submitted to the chain.
+    async fn transfer_treasury_fungible_token(
         &self,
         message: FungibleTokenTransferMessage,
         block_height: u64,
@@ -121,8 +118,8 @@ pub trait ColonyChain {
 
     /// Transfers an NFT from the treasury contract to the destination address.
     ///
-    /// A transaction that carries the given data and the proof will be submitted to the chain.
-    async fn deliver_message_treasury_transfer_non_fungible(
+    /// This is one of the message methods; a transaction that carries the given data and the proof will be submitted to the chain.
+    async fn transfer_treasury_non_fungible_token(
         &self,
         message: NonFungibleTokenTransferMessage,
         block_height: u64,
@@ -131,9 +128,9 @@ pub trait ColonyChain {
 
     /// Submits a transaction to one of the 'custom' contracts in this chain except the light client and the treasury, generalized by the opaque (`String`) packet type.
     ///
-    /// A transaction that carries the given data and the proof will be submitted to the chain.
+    /// This is one of the message delivery methods; a transaction that carries the given data and the proof will be submitted to the chain.
     /// The target contract is the one with the type of `ContractType::Custom` and the name of `contract_name`.
-    async fn deliver_message_custom_order(
+    async fn deliver_custom_order(
         &self,
         contract_name: &str,
         message: CustomMessage,
