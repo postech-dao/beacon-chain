@@ -44,8 +44,8 @@ pub enum Error {
     #[error("invalid proof given")]
     InvalidProof,
     /// When the given message is well decoded and verified, but the message arugment is invalid.
-    #[error("invalid proof given")]
-    InvalidMessage,
+    #[error("invalid message argument given")]
+    InvalidMessageArgument,
     /// When the relayer account has no enough balance to execute the transaction.
     #[error("not enough balance")]
     NotEnoughBalance,
