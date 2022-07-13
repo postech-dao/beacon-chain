@@ -38,17 +38,17 @@ pub enum Error {
     #[error("connection error: {0}")]
     ConnectionError(String),
     /// When the contract fails to decode the messsage.
-    #[error("invalid proof given")]
+    #[error("failed to parse the given message")]
     FailedToParseMessage,
     /// When the given proof is invalid.
     #[error("invalid proof given")]
     InvalidProof,
     /// When the given message is well decoded and verified, but the message arugment is invalid.
-    #[error("invalid message argument given")]
-    InvalidMessageArgument,
+    #[error("invalid message argument given: {0}")]
+    InvalidMessageArgument(String),
     /// When the relayer account has no enough balance to execute the transaction.
-    #[error("not enough balance")]
-    NotEnoughBalance,
+    #[error("not enough balance: got {0}")]
+    NotEnoughBalance(u64),
     /// When the account sequence given in the transaction is invalid.
     #[error("invalid account sequence; expected {0} but got {1}")]
     InvalidAccountSequence(u64, u64),
