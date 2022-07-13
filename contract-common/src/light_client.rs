@@ -1,4 +1,4 @@
-//! An adaptaion of the Simperby light client, with an additional layer of (possible) data en/decoding.
+//! An adaptation of the Simperby light client, with an additional layer of (possible) data en/decoding.
 //!
 //! This will be commonly used by every light client contracts in each colony chain.
 //!

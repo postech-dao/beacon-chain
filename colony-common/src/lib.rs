@@ -24,7 +24,7 @@ pub struct ContractInfo {
     /// The increasing sequence that is for preventing the replay attack.
     ///
     /// A valid message from PBC MUST carry the same number with this,
-    /// in order to succesfully convice the contract. (i.e., this number is something that the consensus should have finalized on-chain).
+    /// in order to succesfully convince the contract. (i.e., this number is something that the consensus should have finalized on-chain).
     ///
     /// - Note1: this is totally irrelevant to the account sequence.
     /// - Note2: the light client contract doesn't need this because the 'block height' provides the same safety guard.
@@ -43,17 +43,17 @@ pub enum Error {
     /// When the given proof is invalid.
     #[error("invalid proof given")]
     InvalidProof,
-    /// When the given message is well decoded and verified, but the message arugment is invalid.
+    /// When the given message is well decoded and verified, but the message argument is invalid.
     #[error("invalid message argument given: {0}")]
     InvalidMessageArgument(String),
-    /// When the relayer account has no enough balance to execute the transaction.
+    /// When the relayer account has not enough balance to execute the transaction.
     #[error("not enough balance: got {0}")]
     NotEnoughBalance(u64),
     /// When the account sequence given in the transaction is invalid.
     #[error("invalid account sequence; expected {0} but got {1}")]
     InvalidAccountSequence(u64, u64),
     /// When the contract sequence given in the transaction is invalid.
-    #[error("invalid account sequence; expected {0} but got {1}")]
+    #[error("invalid contract sequence; expected {0} but got {1}")]
     InvalidContractSequence(u64, u64),
     /// When the contract fails to execute the transaction with its own error.
     #[error("internal contract error: {0}")]
@@ -73,7 +73,7 @@ pub enum Error {
 /// whereas it is generalized as an opaque packet for those non-essential, chain-local and application-specific contracts (custom contracts).
 ///
 /// One trivial implementation of this trait would carry the address of the full node and
-/// a relayer account used to submit message delivering transactions.
+/// the relayer account used to submit message delivering transactions.
 #[async_trait]
 pub trait ColonyChain {
     /// Returns the name of the chain.
