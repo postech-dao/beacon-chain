@@ -14,7 +14,7 @@ use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
 
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-pub struct LightClientUpdageMessage {
+pub struct LightClientUpdateMessage {
     pub header: Header,
     pub proof: BlockFinalizationProof,
 }
