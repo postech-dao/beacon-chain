@@ -37,9 +37,9 @@ pub enum Error {
     /// When there is a problem to access to the full node.
     #[error("connection error: {0}")]
     ConnectionError(String),
-    /// When the contract fails to decode the messsage.
-    #[error("failed to parse the given message")]
-    FailedToParseMessage,
+    /// When the contract fails to decode the input data.
+    #[error("failed to parse the payload of the transaction")]
+    FailedToParseTransactionPayload,
     /// When the given proof is invalid.
     #[error("invalid proof given")]
     InvalidProof,
