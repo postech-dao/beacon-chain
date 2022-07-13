@@ -11,7 +11,7 @@ use thiserror::Error;
 pub enum ContractType {
     Treasury,
     LightClient,
-    General { name: String, description: String },
+    Custom { name: String, description: String },
 }
 
 /// Information of a contract.
@@ -70,7 +70,7 @@ pub enum Error {
 ///
 /// Every colony chains MUST have at least two types of contracts: the light client and the treasury.
 /// This interface directly specifies the actions applicable to the two essential contracts,
-/// whereas it is generalized as an opaque packet for those non-essential, chain-local and application-specific contracts.
+/// whereas it is generalized as an opaque packet for those non-essential, chain-local and application-specific contracts (custom contracts).
 ///
 /// One trivial implementation of this trait would carry the address of the full node and
 /// a relayer account used to submit message delivering transactions.
@@ -129,14 +129,14 @@ pub trait ColonyChain {
         proof: MerkleProof,
     ) -> Result<(), Error>;
 
-    /// Submits a transaction to one of the contracts in this chain except the light client and the treasury, generalized by the opaque (`String`) packet type.
+    /// Submits a transaction to one of the 'custom' contracts in this chain except the light client and the treasury, generalized by the opaque (`String`) packet type.
     ///
     /// A transaction that carries the given data and the proof will be submitted to the chain.
-    /// The target contract is the one with the type of `ContractType::General` and the name of `contract_name`.
-    async fn deliver_message_general_order(
+    /// The target contract is the one with the type of `ContractType::Custom` and the name of `contract_name`.
+    async fn deliver_message_custom_order(
         &self,
         contract_name: &str,
-        message: GeneralMessage,
+        message: CustomMessage,
         block_height: u64,
         proof: MerkleProof,
     ) -> Result<(), Error>;
