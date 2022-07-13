@@ -41,8 +41,8 @@ pub enum Error {
     #[error("failed to parse the payload of the transaction")]
     FailedToParseTransactionPayload,
     /// When the given proof is invalid.
-    #[error("invalid proof given")]
-    InvalidProof,
+    #[error("invalid proof given: got merkle root of {0} but expected {1}")]
+    InvalidProof(String, String),
     /// When the given message is well decoded and verified, but the message argument is invalid.
     #[error("invalid message argument given: {0}")]
     InvalidMessageArgument(String),
