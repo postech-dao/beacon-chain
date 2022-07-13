@@ -97,7 +97,9 @@ pub trait ColonyChain {
     /// Returns the current balance of fungible tokens in the treasury contract.
     async fn get_treasury_fungible_token_balance(&self) -> Result<HashMap<String, Decimal>, Error>;
 
-    /// Returns the current balance of non-fungible tokens in the treasury contract, identified as `(collection address, collection index(chain-specific))`.
+    /// Returns the current balance of non-fungible tokens in the treasury contract, identified as `(collection address, token index)`.
+    ///
+    /// Note that the representation of the token index is specific to the chain, so we just provide as a string.
     async fn get_treasury_non_fungible_token_balance(&self)
         -> Result<Vec<(String, String)>, Error>;
 

@@ -30,7 +30,7 @@ pub struct FungibleTokenTransferMessage {
 #[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
 pub struct NonFungibleTokenTransferMessage {
     pub collection_address: String,
-    pub collection_index: String,
+    pub token_index: String,
     pub receiver_address: String,
     pub contract_sequence: u64,
 }
