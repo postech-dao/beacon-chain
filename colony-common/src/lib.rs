@@ -106,7 +106,7 @@ pub trait ColonyChain {
     /// Updates the light client state by providing the next, valid block header and its proof.
     ///
     /// This is one of the message delivery methods; a transaction that carries the given data will be submitted to the chain.
-    async fn update_light_client(&self, message: LightClientUpdageMessage) -> Result<(), Error>;
+    async fn update_light_client(&self, message: LightClientUpdateMessage) -> Result<(), Error>;
 
     /// Transfers a given amount of fungible tokens from the treasury contract to the destination address.
     ///
