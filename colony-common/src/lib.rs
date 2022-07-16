@@ -1,9 +1,8 @@
-use std::collections::HashMap;
-
 use async_trait::async_trait;
 use pbc_contract_common::*;
 use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 use thiserror::Error;
 
 /// A contract type.
