@@ -12,3 +12,6 @@ tokio = { version = "1.0", features = ["full"] }
 rust_decimal = "1.25.0"
 thiserror = "1.0"
 pbc-contract-common = { version = "0.0.0", path = "../contract-common"}
+serde-tc = "0.3.2"
+serde_json = { version = "1.0" }
+anyhow = { version = "1.0" }

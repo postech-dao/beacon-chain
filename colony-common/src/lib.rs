@@ -1,9 +1,9 @@
 pub mod test_suite;
 
-use async_trait::async_trait;
 use pbc_contract_common::*;
 use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
+use serde_tc::*;
 use std::collections::HashMap;
 use thiserror::Error;
 
@@ -33,7 +33,7 @@ pub struct ContractInfo {
 }
 
 /// An error that can occur when interacting with the contract.
-#[derive(Error, Debug)]
+#[derive(Error, Debug, Serialize, Deserialize, Clone)]
 pub enum Error {
     /// When there is a problem to access to the full node.
     #[error("connection error: {0}")]
@@ -78,10 +78,10 @@ pub enum Error {
 ///
 /// One trivial implementation of this trait would carry the address of the full node and
 /// the relayer account used to submit message delivering transactions.
-#[async_trait]
-pub trait ColonyChain {
+#[serde_tc_full]
+pub trait ColonyChain: Send + Sync {
     /// Returns the name of the chain.
-    fn get_chain_name(&self) -> String;
+    async fn get_chain_name(&self) -> String;
 
     /// Checks whether the chain is healthy and the full node is running.
     async fn check_connection(&self) -> Result<(), Error>;
@@ -144,3 +144,5 @@ pub trait ColonyChain {
         proof: MerkleProof,
     ) -> Result<(), Error>;
 }
+
+impl serde_tc::http::HttpInterface for dyn ColonyChain {}
