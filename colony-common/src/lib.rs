@@ -1,3 +1,5 @@
+pub mod test_suite;
+
 use async_trait::async_trait;
 use pbc_contract_common::*;
 use rust_decimal::prelude::*;
