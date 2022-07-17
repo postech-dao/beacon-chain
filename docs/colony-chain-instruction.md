@@ -11,7 +11,13 @@
 2. Treasury 컨트랙트 개발 및 디플로이: 자세한 스펙은 crate를 참고해주세요.
 3. `trait ColonyChain` 구현
 
+## 구조도
+<img src="./pbc-flow.PNG" alt="overview" width="800"/>
+
 ## Light Client 컨트랙트
+Light Client는 해당 콜로니 체인에 업로드된 다른 컨트랙트들(Treasury 포함)이 공통적으로 사용하는 컨트랙트입니다.
+컨트랙들에서 특정한 액션을 수행하기 위해 메세지를 전달할 때, 그 메세지가 PBC에서 컨센서스가 이뤄진 게 맞는지 검증을 해줍니다.
+
 자세한 스펙은 해당 crate를 참고해주세요.
 
 ### 인터랙션
@@ -22,6 +28,9 @@ Treasury 컨트랙트를 비롯한 다른 컨트랙트에서 Light Client를 참
 검증로직과 내부상태는 `Simperby`가 정의합니다. `pbc-contract-common`에 있는 `struct LightClient`를 사용하면 되고 그 이상으로 직접 알아야할 내용은 없습니다.
 
 ## Treasury 컨트랙트
+Treasury 컨트랙트는 임의의 종류의 FT와 NFT를 갖고 있다가 (기부자들이 직접 이 컨트랙트에 송금합니다)
+PBC의 명령에 따라 적절히 다른 주소로 출금해주는 컨트랙트입니다.
+
 자세한 스펙은 해당 crate를 참고해주세요.
 
 ### 인터랙션
