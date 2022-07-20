@@ -1,4 +1,4 @@
-mod dummy;
+pub mod dummy;
 
 use pbc_colony_common::*;
 use std::collections::HashMap;
