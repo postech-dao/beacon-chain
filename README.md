@@ -1,2 +1,2 @@
 # beacon-chain
-The PDAO becaon chain, a.k.a PBC
+The PDAO beacon chain, a.k.a PBC
