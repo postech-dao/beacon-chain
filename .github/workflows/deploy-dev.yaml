@@ -1,0 +1,30 @@
+name: explorer-deploy-dev
+
+on:
+  push:
+    branches:
+      - "release-dev"
+
+jobs:
+  deploy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - name: Deploy to server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_SERVER_A_HOST }}
+          port: ${{ secrets.DEV_SERVER_A_PORT }}
+          password: ${{ secrets.DEV_SERVER_A_PW }}
+          username: ${{ secrets.DEV_SERVER_A_ID }}
+          script: |
+            pwd
+            cd beacon-chain-dev
+            git checkout release-dev
+            git pull
+            docker rm -f pbc_container
+            docker build -t pbc .
+            docker image prune -f
+            docker run -p 4000:4000 --name pbc_container -d pbc
