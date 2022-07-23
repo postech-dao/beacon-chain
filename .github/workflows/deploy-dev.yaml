@@ -1,0 +1,47 @@
+name: explorer-deploy-dev
+
+on:
+  push:
+    branches:
+      - "release-dev"
+
+jobs:
+  deploy:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - name: Deploy API server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_SERVER_A_HOST }}
+          port: ${{ secrets.DEV_SERVER_A_PORT }}
+          password: ${{ secrets.DEV_SERVER_A_PW }}
+          username: ${{ secrets.DEV_SERVER_A_ID }}
+          script: |
+            pwd
+            cd beacon-chain-dev-1
+            git fetch --all
+            git checkout release-dev
+            docker rm -f pbc-api-server-dev-container
+            docker build -t pbc-api-server-dev -f api-server/Dockerfile .
+            docker image prune -f
+            docker run -p 4000:4000 --name pbc-api-server-dev-container -d pbc-api-server-dev
+      - name: Deploy explorer static file server
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.DEV_SERVER_A_HOST }}
+          port: ${{ secrets.DEV_SERVER_A_PORT }}
+          password: ${{ secrets.DEV_SERVER_A_PW }}
+          username: ${{ secrets.DEV_SERVER_A_ID }}
+          script: |
+            pwd
+            cd beacon-chain-dev-2
+            git fetch --all
+            git checkout release-dev
+            cd explorer
+            docker rm -f pbc-explorer-dev-container
+            docker build -t pbc-explorer-dev .
+            docker image prune -f
+            docker run -p 4100:8080 --name pbc-explorer-dev-container -d pbc-explorer-dev
