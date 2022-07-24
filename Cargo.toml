@@ -1,7 +1,7 @@
 [workspace]
 members = [
     "relayer",
-    "explorer",
+    "api-server",
     "colony-common",
     "contract-common",
     "node",

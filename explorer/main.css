@@ -1,0 +1,21 @@
+nav {
+    position: static;
+    margin-bottom: 50px;
+}
+
+.navbar-title {
+    font-size: xx-large;
+}
+
+body {
+    margin: 10px 50px;
+}
+
+.card-header-url {
+    margin-left: 10px;
+    font-weight: 300;
+}
+
+.card {
+    margin-bottom: 50px;
+}
