@@ -24,9 +24,8 @@ jobs:
             cd beacon-chain-dev-1
             git fetch --all
             git checkout release-dev
-            cd api-server
             docker rm -f pbc-api-server-dev-container
-            docker build -t pbc-api-server-dev .
+            docker build -t pbc-api-server-dev -f api-server/Dockerfile .
             docker image prune -f
             docker run -p 4000:4000 --name pbc-api-server-dev-container -d pbc-api-server-dev
       - name: Deploy explorer static file server
