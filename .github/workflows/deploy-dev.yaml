@@ -44,4 +44,4 @@ jobs:
             docker rm -f pbc-explorer-dev-container
             docker build -t pbc-explorer-dev .
             docker image prune -f
-            docker run -p 8080:8080 --name pbc-explorer-dev-container -d pbc-explorer-dev
+            docker run -p 4100:8080 --name pbc-explorer-dev-container -d pbc-explorer-dev
