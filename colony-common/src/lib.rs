@@ -70,6 +70,15 @@ pub enum Error {
     Unknown(String),
 }
 
+/// An abstract information about a block.
+#[derive(PartialEq, Debug, Serialize, Deserialize, Clone)]
+pub struct Block {
+    /// The height of the block.
+    pub height: u64,
+    /// The UNIX timestamp of the block in seconds.
+    pub timestamp: u64,
+}
+
 /// An abstraction of a colony chain, which is viewed by the relayer and the explorer.
 ///
 /// Every colony chains MUST have at least two types of contracts: the light client and the treasury.
@@ -85,6 +94,9 @@ pub trait ColonyChain: Send + Sync {
 
     /// Checks whether the chain is healthy and the full node is running.
     async fn check_connection(&self) -> Result<(), Error>;
+
+    /// Getes the latest finalized block on the chain.
+    async fn get_last_block(&self) -> Result<Block, Error>;
 
     /// Returns the list of the contracts that are available on the chain
     async fn get_contract_list(&self) -> Result<Vec<ContractInfo>, Error>;

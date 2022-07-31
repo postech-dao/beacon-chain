@@ -25,6 +25,13 @@ impl ColonyChain for Dummy {
         Ok(())
     }
 
+    async fn get_last_block(&self) -> Result<Block, Error> {
+        Ok(Block {
+            height: 123,
+            timestamp: 123,
+        })
+    }
+
     async fn get_contract_list(&self) -> Result<Vec<ContractInfo>, Error> {
         Ok(vec![
             ContractInfo {
