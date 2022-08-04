@@ -7,7 +7,7 @@ license = "MIT"
 description = "PDAO library for colony chain contract development"
 repository = "https://github.com/postech-dao/beacon-chain"
 keywords = ["blockchain", "PDAO"]
-categories = ["Cryptography", "WebAssembly"]
+categories = ["cryptography", "wasm"]
 include = ["src/**/*.rs", "README.md", "LICENSE"]
 
 [dependencies]

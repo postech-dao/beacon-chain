@@ -3,6 +3,12 @@ name = "pdao-colony-common"
 version = "0.0.0"
 authors = ["PDAO Team <hello@postech-dao.xyz>"]
 edition = "2021"
+license = "MIT"
+description = "PDAO library for colony chain development"
+repository = "https://github.com/postech-dao/beacon-chain"
+keywords = ["blockchain", "PDAO"]
+categories = []
+include = ["src/**/*.rs", "README.md", "LICENSE"]
 
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
