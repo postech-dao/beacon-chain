@@ -1,6 +1,6 @@
 pub mod test_suite;
 
-use pbc_contract_common::*;
+use pdao_colony_contract_common::*;
 use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
 use serde_tc::*;

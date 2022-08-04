@@ -1,6 +1,6 @@
 pub mod dummy;
 
-use pbc_colony_common::*;
+use pdao_colony_common::*;
 use std::collections::HashMap;
 use std::sync::Arc;
 
@@ -8,7 +8,7 @@ use std::sync::Arc;
 pub async fn run(
     port: u16,
     mut colony_chains: HashMap<String, Arc<dyn ColonyChain>>,
-    _pbc_api: Box<dyn pbc_node::PbcApi>,
+    _pbc_api: Box<dyn pdao_pbc_node::PbcApi>,
 ) {
     colony_chains.insert("dummy".to_owned(), Arc::new(dummy::Dummy {}));
     let colony_chains: HashMap<String, Arc<dyn serde_tc::http::HttpInterface>> = colony_chains

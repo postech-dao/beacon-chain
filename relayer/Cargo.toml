@@ -1,5 +1,5 @@
 [package]
-name = "pbc-relayer"
+name = "pdao-pbc-relayer"
 version = "0.0.0"
 authors = ["PDAO Team <hello@postech-dao.xyz>"]
 edition = "2021"
@@ -8,5 +8,5 @@ edition = "2021"
 serde = { version = "1.0", features = ["derive"] }
 async-trait = "0.1.56"
 tokio = { version = "1.0", features = ["full"] }
-pbc-colony-common = { version = "0.0.0", path = "../colony-common"}
-pbc-node = { version = "0.0.0", path = "../node"}
+pdao-colony-common = { version = "0.0.0", path = "../colony-common"}
+pdao-pbc-node = { version = "0.0.0", path = "../node"}

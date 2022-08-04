@@ -1,5 +1,5 @@
 [package]
-name = "pbc-api-server"
+name = "pdao-pbc-api-server"
 version = "0.0.0"
 authors = ["PDAO Team <hello@postech-dao.xyz>"]
 edition = "2021"
@@ -9,14 +9,14 @@ serde = { version = "1.0", features = ["derive"] }
 async-trait = "0.1.56"
 blake3 = "1.3.1"
 tokio = { version = "1.0", features = ["full"] }
-pbc-colony-common = { version = "0.0.0", path = "../colony-common"}
-pbc-node = { version = "0.0.0", path = "../node"}
 rust_decimal = "1.25.0"
 rust_decimal_macros = "1.25.0"
-pbc-contract-common = { version = "0.0.0", path = "../contract-common"}
 serde-tc = "0.3.3"
 serde_json = { version = "1.0" }
 anyhow = { version = "1.0" }
+pdao-colony-common = { version = "0.0.0", path = "../colony-common"}
+pdao-pbc-node = { version = "0.0.0", path = "../node"}
+pdao-colony-contract-common = { version = "0.0.0", path = "../contract-common"}
 
 [dev-dependencies]
 reqwest = { version = "0.11", features = ["json"] }
