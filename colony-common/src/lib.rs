@@ -1,5 +1,6 @@
 pub mod test_suite;
 
+use pdao_beacon_chain_common::message as pbc_message;
 use pdao_colony_contract_common::*;
 use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
@@ -122,14 +123,18 @@ pub trait ColonyChain: Send + Sync {
     /// Updates the light client state by providing the next, valid block header and its proof.
     ///
     /// This is one of the message delivery methods; a transaction that carries the given data will be submitted to the chain.
-    async fn update_light_client(&self, message: LightClientUpdateMessage) -> Result<(), Error>;
+    async fn update_light_client(
+        &self,
+        header: light_client::Header,
+        proof: light_client::BlockFinalizationProof,
+    ) -> Result<(), Error>;
 
     /// Transfers a given amount of fungible tokens from the treasury contract to the destination address.
     ///
     /// This is one of the message delivery methods; a transaction that carries the given data and the proof will be submitted to the chain.
     async fn transfer_treasury_fungible_token(
         &self,
-        message: FungibleTokenTransferMessage,
+        message: pbc_message::FungibleTokenTransfer,
         block_height: u64,
         proof: MerkleProof,
     ) -> Result<(), Error>;
@@ -139,7 +144,7 @@ pub trait ColonyChain: Send + Sync {
     /// This is one of the message methods; a transaction that carries the given data and the proof will be submitted to the chain.
     async fn transfer_treasury_non_fungible_token(
         &self,
-        message: NonFungibleTokenTransferMessage,
+        message: pbc_message::NonFungibleTokenTransfer,
         block_height: u64,
         proof: MerkleProof,
     ) -> Result<(), Error>;
@@ -151,7 +156,7 @@ pub trait ColonyChain: Send + Sync {
     async fn deliver_custom_order(
         &self,
         contract_name: &str,
-        message: CustomMessage,
+        message: pbc_message::Custom,
         block_height: u64,
         proof: MerkleProof,
     ) -> Result<(), Error>;

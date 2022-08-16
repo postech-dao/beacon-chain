@@ -4,6 +4,8 @@
 //!
 //! Later You will need to import `simperby-consensus` crate to use the actual implementation of the light client.
 
+use pdao_beacon_chain_common::message;
+
 /// TODO: replace this with the proper type.
 pub type Header = String;
 /// TODO: replace this with the proper type.
@@ -17,14 +19,16 @@ pub type MerkleProof = String;
 pub struct LightClient {
     pub height: u64,
     pub last_header: Header,
+    pub chain_name: String,
 }
 
 impl LightClient {
     /// Intializes a new light client with the initial header.
-    pub fn new(initial_header: Header) -> Self {
+    pub fn new(initial_header: Header, chain_name: String) -> Self {
         Self {
             height: 0,
             last_header: initial_header,
+            chain_name,
         }
     }
 
@@ -46,10 +50,14 @@ impl LightClient {
     /// so the communication between the contracts would be a binary packet exchange (not a Rust code-level invocation).
     pub fn verify_commitment(
         &self,
-        _message: Vec<u8>,
+        message: message::DeliverableMessage,
         block_height: u64,
         proof: MerkleProof,
     ) -> bool {
+        let _record = message::MessageDeliveryRecord {
+            chain: self.chain_name.clone(),
+            message,
+        };
         proof.as_str() == "valid" && block_height == self.height
     }
 }
