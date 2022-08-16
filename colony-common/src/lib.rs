@@ -8,7 +8,7 @@ use std::collections::HashMap;
 use thiserror::Error;
 
 /// A contract type.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub enum ContractType {
     Treasury,
     LightClient,
@@ -16,7 +16,7 @@ pub enum ContractType {
 }
 
 /// Information of a contract.
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
+#[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct ContractInfo {
     /// The address of the contract.
     pub address: String,
@@ -71,7 +71,7 @@ pub enum Error {
 }
 
 /// An abstract information about a block.
-#[derive(PartialEq, Debug, Serialize, Deserialize, Clone)]
+#[derive(PartialEq, Eq, Debug, Serialize, Deserialize, Clone)]
 pub struct Block {
     /// The height of the block.
     pub height: u64,
