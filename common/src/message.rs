@@ -2,7 +2,7 @@
 //!
 //! Note that it's not mandatory to use the following types directly in
 //! `trait ColonyChain` -> Contract communication, but the contract has to convert the message
-//! into `MessageDeliveryRecord` anyway, so that it can request a verification of it to the light client.
+//! into `DeliverableMessage` anyway, so that it can request a verification of it to the light client.
 //! (because the light client needs the very exact string format that PBC has actually recorded)
 //!
 //! Messages will be JSON-encoded.
