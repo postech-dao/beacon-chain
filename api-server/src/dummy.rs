@@ -1,4 +1,5 @@
 use async_trait::async_trait;
+use pdao_beacon_chain_common::message as pbc_message;
 use pdao_colony_common::*;
 use pdao_colony_contract_common::*;
 use pdao_pbc_node::PbcApi;
@@ -73,13 +74,17 @@ impl ColonyChain for Dummy {
         ])
     }
 
-    async fn update_light_client(&self, _message: LightClientUpdateMessage) -> Result<(), Error> {
+    async fn update_light_client(
+        &self,
+        _header: light_client::Header,
+        _proof: light_client::BlockFinalizationProof,
+    ) -> Result<(), Error> {
         Ok(())
     }
 
     async fn transfer_treasury_fungible_token(
         &self,
-        _message: FungibleTokenTransferMessage,
+        _message: pbc_message::FungibleTokenTransfer,
         _block_height: u64,
         _proof: MerkleProof,
     ) -> Result<(), Error> {
@@ -88,7 +93,7 @@ impl ColonyChain for Dummy {
 
     async fn transfer_treasury_non_fungible_token(
         &self,
-        _message: NonFungibleTokenTransferMessage,
+        _message: pbc_message::NonFungibleTokenTransfer,
         _block_height: u64,
         _proof: MerkleProof,
     ) -> Result<(), Error> {
@@ -98,7 +103,7 @@ impl ColonyChain for Dummy {
     async fn deliver_custom_order(
         &self,
         _contract_name: &str,
-        _message: CustomMessage,
+        _message: pbc_message::Custom,
         _block_height: u64,
         _proof: MerkleProof,
     ) -> Result<(), Error> {

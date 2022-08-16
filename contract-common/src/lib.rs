@@ -10,33 +10,3 @@
 pub mod light_client;
 
 pub use light_client::*;
-use rust_decimal::prelude::*;
-use serde::{Deserialize, Serialize};
-
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-pub struct LightClientUpdateMessage {
-    pub header: Header,
-    pub proof: BlockFinalizationProof,
-}
-
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-pub struct FungibleTokenTransferMessage {
-    pub token_id: String,
-    pub amount: Decimal,
-    pub receiver_address: String,
-    pub contract_sequence: u64,
-}
-
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-pub struct NonFungibleTokenTransferMessage {
-    pub collection_address: String,
-    pub token_index: String,
-    pub receiver_address: String,
-    pub contract_sequence: u64,
-}
-
-#[derive(Serialize, Deserialize, Debug, PartialEq, Clone)]
-pub struct CustomMessage {
-    pub message: String,
-    pub contract_sequence: u64,
-}

@@ -5,4 +5,5 @@ members = [
     "colony-common",
     "contract-common",
     "node",
+    "common"
 ]
