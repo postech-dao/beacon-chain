@@ -11,8 +11,6 @@ use rust_decimal::prelude::*;
 use serde::{Deserialize, Serialize};
 
 /// A unit of a PBC-recored message that wraps the actual data.
-///
-/// `T` would be one of the following structs in this module.
 #[derive(Serialize, Deserialize, Debug, PartialEq, Eq, Clone)]
 pub struct MessageDeliveryRecord {
     pub chain: String,
