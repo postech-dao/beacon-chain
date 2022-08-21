@@ -1,6 +1,6 @@
 [package]
 name = "pdao-colony-contract-common"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["PDAO Team <hello@postech-dao.xyz>"]
 edition = "2021"
 license = "MIT"
@@ -14,3 +14,4 @@ include = ["src/**/*.rs", "README.md", "LICENSE"]
 serde = { version = "1.0", features = ["derive"] }
 rust_decimal = "1.25.0"
 pdao-beacon-chain-common = { version = "0.0.0", path = "../common"}
+borsh = { version = "0.9.3" }

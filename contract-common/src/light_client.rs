@@ -4,7 +4,9 @@
 //!
 //! Later You will need to import `simperby-consensus` crate to use the actual implementation of the light client.
 
+use borsh::{BorshDeserialize, BorshSerialize};
 use pdao_beacon_chain_common::message;
+use serde::{Deserialize, Serialize};
 
 /// TODO: replace this with the proper type.
 pub type Header = String;
@@ -16,6 +18,7 @@ pub type MerkleProof = String;
 /// A light client.
 ///
 /// NOTE: this is a dummy implementation.
+#[derive(Serialize, Deserialize, BorshSerialize, BorshDeserialize, PartialEq, Eq, Clone, Debug)]
 pub struct LightClient {
     pub height: u64,
     pub last_header: Header,
