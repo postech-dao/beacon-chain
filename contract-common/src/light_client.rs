@@ -26,6 +26,7 @@ pub type MerkleProof = String;
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub struct LightClient {
     pub height: u64,
     pub last_header: Header,
