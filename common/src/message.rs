@@ -19,6 +19,7 @@ use serde::{Deserialize, Serialize};
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub struct MessageDeliveryRecord {
     pub chain: String,
     pub message: DeliverableMessage,
@@ -33,6 +34,7 @@ pub struct MessageDeliveryRecord {
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub enum DeliverableMessage {
     FungibleTokenTransfer(FungibleTokenTransfer),
     NonFungibleTokenTransfer(NonFungibleTokenTransfer),
@@ -48,6 +50,7 @@ pub enum DeliverableMessage {
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub struct FungibleTokenTransfer {
     pub token_id: String,
     pub amount: u128,
@@ -64,6 +67,7 @@ pub struct FungibleTokenTransfer {
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub struct NonFungibleTokenTransfer {
     pub collection_address: String,
     pub token_index: String,
@@ -80,6 +84,7 @@ pub struct NonFungibleTokenTransfer {
     feature = "near",
     derive(borsh::BorshSerialize, borsh::BorshDeserialize)
 )]
+#[cfg_attr(feature = "cosmos", derive(schemars::JsonSchema))]
 pub struct Custom {
     pub message: String,
     pub contract_sequence: u64,
