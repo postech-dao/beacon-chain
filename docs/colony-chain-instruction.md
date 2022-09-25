@@ -61,7 +61,7 @@ PBC의 명령에 따라 적절히 다른 주소로 출금해주는 컨트랙트�
 
 ### 크로스 컨트랙트 인터랙션
 Light Client와 다르게 Treasury는 크로스 컨트랙트 인터랙션의 Callee가 아닌 Caller입니다.
-Light Client로 들어오는 두 트랜잭션을 수행할 때에는 무조건 Light Client가 제공해주는 `verify_commitment()`를 사용해야합니다.
+Treasury 로 들어오는 두 트랜잭션을 수행할 때에는 무조건 Light Client가 제공해주는 `verify_commitment()`를 사용해야합니다.
 
 ### 토큰 모델
 
